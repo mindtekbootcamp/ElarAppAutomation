@@ -21,5 +21,25 @@ public class CreateNewDriverPage {
     @FindBy(xpath = "//button[text()='Create new']")
     public WebElement createNewButton;
 
+    @FindBy(name = "is_staff")
+    public WebElement staffCheckBox;
+
+    @FindBy(name = "full_name")
+    public WebElement fullName;
+
+    @FindBy(xpath = "(//button[@aria-label='Choose date'])[1]")
+    public WebElement driverLicenseExp;
+
+    @FindBy(xpath = "//button[text()='28']")
+    public WebElement selectDateDL;
+
+    @FindBy(xpath = "(//button[@aria-label='Choose date'])[1]")
+    public WebElement medicalLicenseExp;
+
+    @FindBy(xpath = "//button[text()='25']")
+    public WebElement selectDateMedical;
+
+    @FindBy(xpath = "//button[text()='Go to Edit']")
+    public WebElement goToEditButtonOnPopup;
 
 }
