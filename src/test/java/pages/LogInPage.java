@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 public class LogInPage {
@@ -23,5 +24,11 @@ public class LogInPage {
 
     @FindBy(xpath = "//button[text()='Login']")
     public WebElement loginButton;
+
+    public void login(){
+        username.sendKeys(ConfigReader.getProperty("ElarUsername"));
+        password.sendKeys(ConfigReader.getProperty("ElarPassword"));
+        loginButton.click();
+    }
 
 }
