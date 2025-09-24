@@ -36,10 +36,15 @@ public class CreateNewDriverPage {
     @FindBy(xpath = "(//button[@aria-label='Choose date'])[1]")
     public WebElement medicalLicenseExp;
 
-    @FindBy(xpath = "//button[text()='25']")
+    @FindBy(xpath = "//button[text()='28']")
     public WebElement selectDateMedical;
 
     @FindBy(xpath = "//button[text()='Go to Edit']")
     public WebElement goToEditButtonOnPopup;
+
+    @FindBy(xpath = "//input[@name='full_name']/../following-sibling::p")
+    public WebElement errorMessage;
+
+
 
 }
