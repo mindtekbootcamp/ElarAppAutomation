@@ -24,7 +24,7 @@ public class CreateDriverTests extends TestBase {
         driversPage.addDriverButton.click();
     }
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void createDriverBackToListAndCreateNewButtonsTests(){
         goToCreateDriverPage();
         // 5. Validate BACK TO LIST and CREATE NEW buttons are in the page
@@ -33,7 +33,7 @@ public class CreateDriverTests extends TestBase {
         Assert.assertTrue(createNewDriverPage.createNewButton.isDisplayed());
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverStaffUncheckedByDefaultTest(){
         goToCreateDriverPage();
         // 5. Validate Staff checkbox is unchecked by default
@@ -47,7 +47,7 @@ public class CreateDriverTests extends TestBase {
 
     }
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void createDriverValidateStaffIsCheckedTest() throws InterruptedException {
         goToCreateDriverPage();
     //        5. Check the Staff
@@ -79,7 +79,7 @@ public class CreateDriverTests extends TestBase {
     }
 
 
-    @Test
+    @Test(groups = { "regression"})
     public void createDriverValidateStaffIsUncheckedTest() throws InterruptedException {
         goToCreateDriverPage();
         // 5. Check the Staff
@@ -110,7 +110,7 @@ public class CreateDriverTests extends TestBase {
         Assert.assertTrue(!createNewDriverPage.staffCheckBox.isSelected());
     }
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void createDriverValidateFullNameMaximumValue50CharactersTests() throws InterruptedException {
         goToCreateDriverPage();
         //5. Enter full_name up to 50 characters
@@ -135,7 +135,7 @@ public class CreateDriverTests extends TestBase {
         Assert.assertEquals(createNewDriverPage.fullName.getAttribute("value"),"Stephen Lomart");
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createValidateFullNameMaximumValue50CharactersNegativeScenario() throws InterruptedException {
         goToCreateDriverPage();
         // 5. Enter full name with more than 50 characters
@@ -160,7 +160,7 @@ public class CreateDriverTests extends TestBase {
         Assert.assertEquals(createNewDriverPage.errorMessage.getText(),"String must contain at most 50 character(s)");
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createValidateFullNameMaximumValue1Character() throws InterruptedException {
         goToCreateDriverPage();
         CreateNewDriverPage createNewDriverPage = new CreateNewDriverPage();
@@ -182,7 +182,7 @@ public class CreateDriverTests extends TestBase {
         Assert.assertEquals(createNewDriverPage.fullName.getAttribute("value"),"a");
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createNegativeScenarioValidateFullNameWithSpecialCharacters() throws InterruptedException {
         goToCreateDriverPage();
 
