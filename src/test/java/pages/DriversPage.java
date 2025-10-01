@@ -21,4 +21,49 @@ public class DriversPage {
     @FindBy(xpath = "//button[text()='Add driver']")
     public WebElement addDriverButton;
 
+    @FindBy(xpath = "//input[@value='']")
+    public WebElement searchBar;
+
+    @FindBy(xpath = "//button[text()='ID']")
+    public WebElement idButton;
+
+    @FindBy(xpath = "//button[@aria-label=\"search\"]")
+    public WebElement searchButton;
+
+    @FindBy(xpath = "//div[@data-field='full_name' and @role='cell']/div")
+    public WebElement title;
+
+    @FindBy(xpath = "//button[text()='Name']")
+    public WebElement nameButton;
+
+    @FindBy(xpath = "//button[text()='Email/Phone']")
+    public WebElement emailPhoneButton;
+
+    @FindBy(xpath = "//div[@data-field='email' and @role='cell']/div")
+    public WebElement validateEmailOutcome;
+
+    @FindBy(xpath = "//div[@data-field='phone' and @role='cell']/div")
+    public WebElement validatePhoneOutcome;
+
+    @FindBy(xpath = "//div[@data-field='driver_number' and @role='cell']")
+    public WebElement validateIdOutcome;
+
+
+    @FindBy(xpath = "")
+    public WebElement validateIdError;
+
+    @FindBy(xpath = "")
+    public WebElement validateNameError;
+
+    @FindBy(xpath = "")
+    public WebElement validateEmailError;
+
+    @FindBy(xpath = "")
+    public WebElement validatePhoneError;
+
+    public void driversPage(){
+        driversTab.click();
+        searchBar.click();
+    }
+
 }
