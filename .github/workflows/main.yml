@@ -23,4 +23,4 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Run TestNG Tests
-        run: mvn test -DsuiteXmlFile=src/test/resources/testng_regression_api.xml
+        run: mvn test -DsuiteXmlFile=testng_regression_api.xml
