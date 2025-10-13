@@ -5,30 +5,36 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DriversPage;
 import pages.LogInPage;
+import utilities.CSVReader;
 import utilities.ConfigReader;
 import utilities.TestBase;
 
+import java.util.List;
+import java.util.Map;
+
 public class SearchDriverTests extends TestBase {
+
+    List<Map<String, String>> validTestData= CSVReader.readCsvToListOfMaps("searchdrivervaliddata");
+    List<Map<String, String>> invalidTestData= CSVReader.readCsvToListOfMaps("searchdriverinvaliddata");
 
     @Test
     public void ValidatesearchDriverTests(){
         driver.get(ConfigReader.getProperty("ElarAppURL"));
-    LogInPage logInPage = new LogInPage();
-    logInPage.login();
+        LogInPage logInPage = new LogInPage();
+        logInPage.login();
 
         DriversPage driversPage = new DriversPage();
         driversPage.driversPage();
 //        driversPage.driversTab.click();
 //        driversPage.searchBar.click();
         driversPage.idButton.click();
-        driversPage.searchBar.sendKeys("1201");
+        driversPage.searchBar.sendKeys(validTestData.get(0).get("id"));
         driversPage.searchButton.click();
 
         Assert.assertTrue(driversPage.idButton.isDisplayed());
-        Assert.assertEquals(driversPage.validateIdOutcome.getText(), "1201");
-
-
+        Assert.assertEquals(driversPage.validateIdOutcome.getText(), validTestData.get(0).get("id"));
     }
+
     @Test
     public void ValidateDriverIsSearchableByName(){
         driver.get(ConfigReader.getProperty("ElarAppURL"));
@@ -38,11 +44,11 @@ public class SearchDriverTests extends TestBase {
         DriversPage driversPage = new DriversPage();
         driversPage.driversPage();
         driversPage.nameButton.click();
-        driversPage.searchBar.sendKeys("Russell Hamilton");
+        driversPage.searchBar.sendKeys(validTestData.get(0).get("name"));
         driversPage.searchButton.click();
 
         Assert.assertTrue(driversPage.title.isDisplayed());
-        Assert.assertEquals(driversPage.title.getText(), "Russell Hamilton");
+        Assert.assertEquals(driversPage.title.getText(), validTestData.get(0).get("name"));
     }
 
     @Test
@@ -54,14 +60,14 @@ public class SearchDriverTests extends TestBase {
         DriversPage driversPage = new DriversPage();
         driversPage.driversPage();
         driversPage.emailPhoneButton.click();
-        driversPage.searchBar.sendKeys("driver@driver.com");
+        driversPage.searchBar.sendKeys(validTestData.get(0).get("email"));
         driversPage.searchButton.click();
 
         Assert.assertTrue(driversPage.emailPhoneButton.isDisplayed());
        // Assert.assertEquals(driversPage.emailPhoneButton.getAttribute("class"), "driver@driver.com");
         //div[contains(text(),'driver@driver.com')]
 
-        Assert.assertEquals(driversPage.validateEmailOutcome.getText(), "driver@driver.com");
+        Assert.assertEquals(driversPage.validateEmailOutcome.getText(), validTestData.get(0).get("name"));
     }
 
 
@@ -76,11 +82,11 @@ public class SearchDriverTests extends TestBase {
         driversPage.searchBar.click();
         driversPage.emailPhoneButton.click();
 
-        driversPage.searchBar.sendKeys("+1 (800) 555-6576");
+        driversPage.searchBar.sendKeys(validTestData.get(0).get("phone_number"));
         driversPage.searchButton.click();
 
         Assert.assertTrue(driversPage.emailPhoneButton.isDisplayed());
-        Assert.assertEquals(driversPage.validatePhoneOutcome, "+1 (800) 555-6576");
+        Assert.assertEquals(driversPage.validatePhoneOutcome, validTestData.get(0).get("phone_number"));
 
     }
 
@@ -95,7 +101,7 @@ public class SearchDriverTests extends TestBase {
         driversPage.searchBar.click();
         driversPage.idButton.click();
 
-        driversPage.searchBar.sendKeys("abc");
+        driversPage.searchBar.sendKeys(invalidTestData.get(0).get("id"));
         driversPage.searchButton.click();
 
         Assert.assertTrue(driversPage.validateIdError.isDisplayed());
@@ -114,7 +120,7 @@ public class SearchDriverTests extends TestBase {
         driversPage.searchBar.click();
         driversPage.nameButton.click();
 
-        driversPage.searchBar.sendKeys("@!#$%^");
+        driversPage.searchBar.sendKeys(invalidTestData.get(0).get("name"));
         driversPage.searchButton.click();
 
         Assert.assertTrue(driversPage.validateNameError.isDisplayed());
@@ -133,7 +139,7 @@ public class SearchDriverTests extends TestBase {
         driversPage.searchBar.click();
         driversPage.emailPhoneButton.click();
 
-        driversPage.searchBar.sendKeys("MarkDacasces@!@#$%.com");
+        driversPage.searchBar.sendKeys(invalidTestData.get(0).get("email"));
         driversPage.searchButton.click();
 
         Assert.assertTrue(driversPage.validateEmailError.isDisplayed());
@@ -151,7 +157,7 @@ public class SearchDriverTests extends TestBase {
         driversPage.searchBar.click();
         driversPage.emailPhoneButton.click();
 
-        driversPage.searchButton.sendKeys("abc");
+        driversPage.searchButton.sendKeys(invalidTestData.get(0).get("phone_number"));
         driversPage.searchButton.click();
 
         Assert.assertTrue(driversPage.validatePhoneError.isDisplayed());

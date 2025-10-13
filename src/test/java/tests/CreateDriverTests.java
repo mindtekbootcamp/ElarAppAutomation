@@ -6,10 +6,18 @@ import org.testng.annotations.Test;
 import pages.CreateNewDriverPage;
 import pages.DriversPage;
 import pages.LogInPage;
+import utilities.CSVReader;
 import utilities.ConfigReader;
 import utilities.TestBase;
 
+import java.util.List;
+import java.util.Map;
+
 public class CreateDriverTests extends TestBase {
+
+    List<Map<String, String>> validTestData= CSVReader.readCsvToListOfMaps("createdrivervaliddata");
+    List<Map<String, String>> invalidTestData= CSVReader.readCsvToListOfMaps("createdriverinvaliddata");
+
 
     public void goToCreateDriverPage(){
         // 1. Navigate to https://sandbox.elarbridges.com/auth/login
