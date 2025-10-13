@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 
 public class PostDriverApiTest {
 
-    @Test
+    @Test(groups = {"smoke","regreesion"})
     public void createDriverApiPositiveTest(){
         String full_name="Patel Harsh";
         String is_staff="false";
@@ -38,7 +38,7 @@ public class PostDriverApiTest {
         Assert.assertEquals(postResponse.body().jsonPath().getString("is_staff"), is_staff);
     }
 
-    @Test
+    @Test(groups = {"smoke","regreesion"})
     public void createDriverApiWithMoreThan50CharsNameTest(){
         String full_name="fwuniuvwivneriuiuvnuvnijsdbfkjdansfkjnfhouiefniuenfuiwenbviuweviuwdebviuwdbnf";
         String is_staff="false";
