@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.CreateNewDriverPage;
 import pages.DriversPage;
 import pages.LogInPage;
+import utilities.BrowserUtils;
 import utilities.CSVReader;
 import utilities.ConfigReader;
 import utilities.TestBase;
@@ -126,15 +127,14 @@ public class CreateDriverTests extends TestBase {
         createNewDriverPage.fullName.sendKeys("Stephen Lomart");
         createNewDriverPage.fullName.click();
 
-        JavascriptExecutor js = ((JavascriptExecutor) driver);
-        js.executeScript("window.scrollBy(0, 500)");
+        BrowserUtils.scrollPageDownUp(500);
         createNewDriverPage.driverLicenseExp.click();
         createNewDriverPage.selectDateDL.click();
         createNewDriverPage.driverLicenseExp.click();
         Thread.sleep(500);
         createNewDriverPage.selectDateMedical.click();
         // 7. Click on Create New button
-        js.executeScript("window.scrollBy(0,400)");
+        BrowserUtils.scrollPageDownUp(400);
         createNewDriverPage.createNewButton.click();
 
         createNewDriverPage.goToEditButtonOnPopup.click();
@@ -150,17 +150,18 @@ public class CreateDriverTests extends TestBase {
         CreateNewDriverPage createNewDriverPage = new CreateNewDriverPage();
         createNewDriverPage.fullName.sendKeys("qwertuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm");
 
-        JavascriptExecutor js = ((JavascriptExecutor) driver);
-        js.executeScript("window.scrollBy(0, 500)");
+        BrowserUtils.scrollPageDownUp(500);
         createNewDriverPage.driverLicenseExp.click();
         createNewDriverPage.selectDateDL.click();
         createNewDriverPage.medicalLicenseExp.click();
         Thread.sleep(500);
         createNewDriverPage.selectDateMedical.click();
         // 7. Click on Create New button
-        js.executeScript("window.scrollBy(0,400)");
+        // js.executeScript("window.scrollBy(0,400)");
+        BrowserUtils.scrollPageDownUp(400);
         createNewDriverPage.createNewButton.click();
-        js.executeScript("window.scrollBy(0, -1000)");
+        //js.executeScript("window.scrollBy(0, -1000)");
+        BrowserUtils.scrollPageDownUp(-1000);
 
         // 6. Validate error_message for full_name
         CreateNewDriverPage createNewDriverPage1 = new CreateNewDriverPage();
@@ -175,14 +176,16 @@ public class CreateDriverTests extends TestBase {
         createNewDriverPage.fullName.sendKeys("a");
 
         JavascriptExecutor js = ((JavascriptExecutor) driver);
-        js.executeScript("window.scrollBy(0, 500)");
+        // js.executeScript("window.scrollBy(0, 500)");
+        BrowserUtils.scrollPageDownUp(500);
         createNewDriverPage.driverLicenseExp.click();
         createNewDriverPage.selectDateDL.click();
         createNewDriverPage.medicalLicenseExp.click();
         Thread.sleep(500);
         createNewDriverPage.selectDateMedical.click();
         // 7. Click on Create New button
-        js.executeScript("window.scrollBy(0,400)");
+        //js.executeScript("window.scrollBy(0,400)");
+        BrowserUtils.scrollPageDownUp(400);
         createNewDriverPage.createNewButton.click();
         createNewDriverPage.goToEditButtonOnPopup.click();
 
@@ -197,17 +200,20 @@ public class CreateDriverTests extends TestBase {
         CreateNewDriverPage createNewDriverPage = new CreateNewDriverPage();
         createNewDriverPage.fullName.sendKeys("!@#$%^&*()");
 
-        JavascriptExecutor js = ((JavascriptExecutor) driver);
-        js.executeScript("window.scrollBy(0, 500)");
+        //JavascriptExecutor js = ((JavascriptExecutor) driver);
+        //js.executeScript("window.scrollBy(0, 500)");
+        BrowserUtils.scrollPageDownUp(500);
         createNewDriverPage.driverLicenseExp.click();
         createNewDriverPage.selectDateDL.click();
         createNewDriverPage.medicalLicenseExp.click();
         Thread.sleep(500);
         createNewDriverPage.selectDateMedical.click();
         // 7. Click on Create New button
-        js.executeScript("window.scrollBy(0,400)");
+        //js.executeScript("window.scrollBy(0,400)");
+        BrowserUtils.scrollPageDownUp(400);
         createNewDriverPage.createNewButton.click();
-        js.executeScript("window.scrollBy(0, -1000)");
+       // js.executeScript("window.scrollBy(0, -1000)");
+        BrowserUtils.scrollPageDownUp(-1000);
 
         Assert.assertTrue(createNewDriverPage.errorMessage.isDisplayed());
         Assert.assertEquals(createNewDriverPage.errorMessage.getText(),"Input must contain only alphanumeric and specific punctuation characters");
